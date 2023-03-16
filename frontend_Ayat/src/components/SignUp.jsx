@@ -33,7 +33,7 @@ const SignUp = () => {
 
   const submit = (values, { setSubmitting, resetForm }) => {
     axios
-      .post("http://localhost:4000/SignUp", values, {
+      .post("https://ayat-cfpy.onrender.com/SignUp", values, {
         "contnt-type": "application/json",
       })
       .then((res) => {

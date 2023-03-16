@@ -23,7 +23,7 @@ const VerifyCode = () => {
   const [name, setName] = useState("");
   const onSubmit = (values, { setSubmitting, resetForm }) => {
     axios
-      .post("http://localhost:4000/verification", values, {
+      .post("https://ayat-cfpy.onrender.com/verification", values, {
         "contnt-type": "application/json",
       })
       .then((response) => {
