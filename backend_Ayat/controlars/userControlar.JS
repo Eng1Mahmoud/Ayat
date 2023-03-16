@@ -34,7 +34,7 @@ const verification = (req, res) => {
       user: localStorag.get("user"),
     });
     const user = new users(localStorag.get("user"));
-    SendMessage(user.phone,` السلام عليكم ورحمة الله وبركاته  ${user.name} 🥰  لقد تم الاشتراك بنجاح في خدمة ايات`);
+    SendMessage(user.phone,` السلام عليكم ورحمة الله وبركاته  ${user.name.split(" ")[0]} 🥰  لقد تم الاشتراك بنجاح في خدمة ايات`);
     user.save().then((result) => {
       console.log("User added", result);
       

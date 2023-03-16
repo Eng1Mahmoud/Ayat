@@ -27,7 +27,7 @@ const VerifyCode = () => {
         "contnt-type": "application/json",
       })
       .then((response) => {
-        console.log(response.data);
+    
         setVerification(response.data.verification);
         setName(response.data.user.name);
       });
@@ -35,7 +35,7 @@ const VerifyCode = () => {
       setSubmitting(false);
       resetForm();
     }, 400);
-    console.log(values);
+    
   };
 
   return (

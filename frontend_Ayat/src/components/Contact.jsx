@@ -36,7 +36,7 @@ const Contact = () => {
   };
   const onSubmit = (values, { setSubmitting, resetForm }) => {
     axios
-      .post("http://localhost:4000/contact", values, {
+      .post("https://ayat-cfpy.onrender.com/contact", values, {
         "contnt-type": "application/json",
       })
       .then((res) => {

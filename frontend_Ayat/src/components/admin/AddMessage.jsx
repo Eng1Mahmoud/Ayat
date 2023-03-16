@@ -30,7 +30,7 @@ const AddMessage = () => {
   const handleSubmit = (values, { resetForm }) => {
  
     axios
-      .post("http://localhost:4000/sendMessageToUser", values, {
+      .post("https://ayat-cfpy.onrender.com/sendMessageToUser", values, {
         headers: {
           "Content-Type": "application/json",
           authorization: `Bearer ${Cookies.get("token")}`,

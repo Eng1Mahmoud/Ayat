@@ -7,15 +7,12 @@ const fetchAyah = async () => {
   try {
     const allUsers = await FetchAllUsers();
     const ayah = await getAyah(localStorag.get("id"));
-    const message = ` *السلام عليكم ورحمة الله وبركاته*   🥰🌿
-
+    const message = ` *السلام عليكم ورحمة الله وبركاته*  🥰🌿
 الاية ${ayah.ayah_number} من سورة *${ayah.sura}* 👇
-  
 *${ayah.verse}*
-      
-*_تفسير الاية_* 👇🌼
+ *_تفسير الاية_* 👇🌼
   
-${ayah.tafsere} 
+ ${ayah.tafsere} 
   
   *تفسير السعدي* ❤️
   `;
@@ -35,7 +32,7 @@ ${ayah.tafsere}
 
     allUsers.forEach(function (user) {
       options.form.to = `+2${user.phone}`;
-      options.form.caption = ` ${user.name}${message}`;
+      options.form.caption = ` ${user.name.split(" ")[0]}${message}`;
       request(options, function (error, response, body) {
         if (error) throw new Error(error);
       });

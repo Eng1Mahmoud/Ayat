@@ -3,7 +3,7 @@ import { Formik, Form, Field } from "formik";
 import axios from "axios";
 import image from "../../assets/suport.png";
 import Cookies from "js-cookie";
-import {useNavigate} from "react-router-dom"
+import { useNavigate } from "react-router-dom";
 const validate = (values) => {
   const errors = {};
 
@@ -16,7 +16,7 @@ const validate = (values) => {
 const Replay = () => {
   const [send, setSend] = useState(false);
   const [messageError, setMessageError] = useState("");
-  const navigat = useNavigate()
+  const navigat = useNavigate();
   const initialValues = {
     replay: "",
     to: "",
@@ -24,7 +24,7 @@ const Replay = () => {
 
   const handleSubmit = (values, { resetForm }) => {
     axios
-      .post("http://localhost:4000/replay", values, {
+      .post("https://ayat-cfpy.onrender.com/replay", values, {
         headers: {
           "Content-Type": "application/json",
           authorization: `Bearer ${Cookies.get("token")}`,
@@ -96,7 +96,10 @@ const Replay = () => {
               )}
             </Formik>
           </div>
-          <button className="btn" onClick={()=> navigat("/admin/dashboard")}> العودة الي الصفحة السابقة</button>
+          <button className="btn" onClick={() => navigat("/admin/dashboard")}>
+            {" "}
+            العودة الي الصفحة السابقة
+          </button>
         </div>
       </div>
     </section>
