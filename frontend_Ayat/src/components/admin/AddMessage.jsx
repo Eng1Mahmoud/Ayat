@@ -24,7 +24,7 @@ const AddMessage = () => {
   };
 
   const handleSubmit = (values, { resetForm }) => {
-    console.log(values)
+ 
     axios
       .post("http://localhost:4000/sendMessageToUser", values, {
         headers: {
@@ -33,7 +33,7 @@ const AddMessage = () => {
         },
       })
       .then((res) => {
-        console.log(res.data);
+    
       })
       .catch((err) => {
         console.error(err);

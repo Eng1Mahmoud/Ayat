@@ -37,7 +37,7 @@ const Contact = () => {
         "contnt-type": "application/json",
       })
       .then((res) => {
-        console.log(res.data.added);
+
         if (res.data.added === true) {
           setAdded(true);
         }

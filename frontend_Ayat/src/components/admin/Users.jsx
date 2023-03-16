@@ -12,9 +12,9 @@ export const Users = () => {
         },
       })
       .then((res) => {
-        console.log(res.data);
+    
          setUsers(res.data); 
-        console.log(users);
+    
       })
       .catch((err) => {
         console.log(err);
