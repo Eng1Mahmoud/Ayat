@@ -311,6 +311,11 @@ footer strong .name{
   font-family: ToyorAljanah;
   text-decoration: none;
 }
+
+.errorPage{
+ color: var(--primary-color);
+  background: rgba(240, 248, 255, 0.904);
+}
 @media (max-width: 767px) {
   .hero .container .content {
     width: 100% !important;
