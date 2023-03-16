@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import Cookies from "js-cookie";
+import {useNavigate} from "react-router-dom"
 export const Users = () => {
   const [users, setUsers] = useState([]);
+  const navigat = useNavigate()
   useEffect(() => {
     axios
-      .get("http://localhost:4000/AllUser", {
+      .get("https://ayat-cfpy.onrender.com/AllUser", {
         headers: {
           "Content-Type": "application/json",
           authorization: `Bearer ${Cookies.get("token")}`,
@@ -63,6 +65,7 @@ export const Users = () => {
               )}
             </table>
           </div>
+          <button className="btn" onClick={()=> navigat("/admin/dashboard")}> العودة الي الصفحة السابقة</button>
         </div>
       </div>
     </section>

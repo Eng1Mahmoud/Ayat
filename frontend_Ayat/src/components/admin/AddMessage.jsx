@@ -1,8 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
 import { Formik, Form, Field } from "formik";
 import axios from "axios";
 import image from "../../assets/addmessage.png";
 import Cookies from "js-cookie";
+import {useNavigate} from "react-router-dom"
 const validate = (values) => {
   const errors = {};
 
@@ -17,6 +18,9 @@ const validate = (values) => {
 };
 
 const AddMessage = () => {
+  const [send,setSend] = useState(false)
+  const [messageError,setMessageError] = useState("")
+  const navigat = useNavigate()
   const initialValues = {
     message: "",
     url: "",
@@ -33,7 +37,9 @@ const AddMessage = () => {
         },
       })
       .then((res) => {
-    
+        setSend(res.data.send)
+        setMessageError(res.data.message)
+        
       })
       .catch((err) => {
         console.error(err);
@@ -54,6 +60,9 @@ const AddMessage = () => {
             </div>
           </div>
           <div className="content py-3 col-md-6 col-sm-12 pb-5">
+          {
+            send?<div>  {messageError} </div>:null
+           }
             <Formik
               initialValues={initialValues}
               validate={validate}
@@ -114,6 +123,7 @@ const AddMessage = () => {
               )}
             </Formik>
           </div>
+          <button className="btn" onClick={()=> navigat("/admin/dashboard")}> العودة الي الصفحة السابقة</button>
         </div>
       </div>
     </section>

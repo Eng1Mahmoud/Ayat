@@ -15,17 +15,17 @@ body {
 }
 
 .btn {
-  background-color: var(--primary-color);
-  border-color: var(--primary-color);
-  color: white;
+  background-color: var(--primary-color) !important;
+  border-color: var(--primary-color) !important;
+  color: white !important;
   font-weight: bold;
   font-size: 20px;
   font-family: Shoroq;
-  transition: all .5s linear;
-  -webkit-transition: all .5s linear;
-  -moz-transition: all .5s linear;
-  -ms-transition: all .5s linear;
-  -o-transition: all .5s linear;
+  transition: all 0.5s linear;
+  -webkit-transition: all 0.5s linear;
+  -moz-transition: all 0.5s linear;
+  -ms-transition: all 0.5s linear;
+  -o-transition: all 0.5s linear;
 }
 .btn:hover {
   background-color: var(--primary-color);
@@ -59,26 +59,26 @@ header .container .list {
   font-weight: bold;
   color: white !important;
 }
-.navbar-brand  img{
-  transition: all .5s linear;
-  width:50px;
-  height:50px;
-  transform: scale(2.5,3);
-  -webkit-transform: scale(2.5,3);
-  -moz-transform: scale(2.5,3);
-  -ms-transform: scale(2.5,3);
-  -o-transform: scale(2.5,3);
-  -webkit-transition: all .5s linear;
-  -moz-transition: all .5s linear;
-  -ms-transition: all .5s linear;
-  -o-transition: all .5s linear;
+.navbar-brand img {
+  transition: all 0.5s ease;
+  width: 50px;
+  height: 50px;
+  transform: scale(2.5, 3);
+  -webkit-transform: scale(2.5, 3);
+  -moz-transform: scale(2.5, 3);
+  -ms-transform: scale(2.5, 3);
+  -o-transform: scale(2.5, 3);
+  -webkit-transition: all 0.5s ease;
+  -moz-transition: all 0.5s ease;
+  -ms-transition: all 0.5s ease;
+  -o-transition: all 0.5s ease;
 }
-.navbar-brand  img:hover{
-  transform: scale(2.7,3.1);
-  -webkit-transform: scale(2.7,3.1);
-  -moz-transform: scale(2.7,3.1);
-  -ms-transform: scale(2.7,3.1);
-  -o-transform: scale(2.7,3.1);
+.navbar-brand img:hover {
+  transform: scale(2.7, 3.1);
+  -webkit-transform: scale(2.7, 3.1);
+  -moz-transform: scale(2.7, 3.1);
+  -ms-transform: scale(2.7, 3.1);
+  -o-transform: scale(2.7, 3.1);
 }
 .navbar-toggler:focus {
   border: none;
@@ -87,23 +87,29 @@ header .container .list {
 }
 
 .nav-link {
-  transition: all .5s linear;
+  transition: all 0.5s ease;
   font-size: 22px;
   font-weight: bold;
   font-family: Shoroq;
   padding-left: 15px;
   padding-right: 15px;
   color: white !important;
+  -webkit-transition: all 0.5s ease;
+  -moz-transition: all 0.5s ease;
+  -ms-transition: all 0.5s ease;
+  -o-transition: all 0.5s ease;
 }
-.navbar-nav{
-  padding-top: 10px;
+
+.nav-link:hover {
+  transform: scale(1.01);
+  -webkit-transform: scale(1.01);
+  -moz-transform: scale(1.01);
+  -ms-transform: scale(1.01);
+  -o-transform: scale(1.01);
 }
-.nav-link:hover{
-  transform: scale(1.1);
-  -webkit-transform: scale(1.1);
-  -moz-transform: scale(1.1);
-  -ms-transform: scale(1.1);
-  -o-transform: scale(1.1);
+.navbar-nav {
+  border-top: 2px solid rgba(255, 255, 255, 0.726);
+ margin-top: 10px;
 }
 /*end header */
 /*start hero*/
@@ -239,7 +245,8 @@ header .container .list {
   font-size: 15px;
 }
 .Contact .content .form-group .form-control[name="message"],
-.replay .content .form-group .form-control[name="replay"] {
+.replay .content .form-group .form-control[name="replay"],
+.addMessage .content .form-group .form-control[name="message"] {
   height: 200px;
 }
 .verifycode .container form .error {
@@ -306,14 +313,14 @@ footer {
   font-family: Shoroq;
 }
 
-footer strong .name{
+footer strong .name {
   color: white;
   font-family: ToyorAljanah;
   text-decoration: none;
 }
 
-.errorPage{
- color: var(--primary-color);
+.errorPage {
+  color: var(--primary-color);
   background: rgba(240, 248, 255, 0.904);
 }
 @media (max-width: 767px) {

@@ -76,58 +76,71 @@ const Login = (req, res) => {
 };
 // replay to users
 const replay = (req,res)=>{
-  SendMessage(req.body.to,req.body.replay)
+  try{
+    SendMessage(req.body.to,req.body.replay)
+    res.json({"send":true,"message":"لقد تم ارسال الرسالة بنجاح"})
+  }
+  catch(err){
+    res.json({"send":false,"message":"لقد تم ارسال الرسالة بنجاح"})
+  }
+
 }
 
 // send message to users 
 const SendMessageToUser = async(req,res)=>{
   const allUsers = await FetchAllUsers();
-  if(req.body.type){
-  
-    var options = {
-      method: 'POST',
-      url: `https://api.ultramsg.com/${process.env.INSTANCE_ID}/messages/video`,
-      headers: {'content-type': ' application/x-www-form-urlencoded'},
-      form: {
-        "token":process.env.WHATSAPP_TOKEN ,
-        "to": "",
-        "video":`${req.body.url}`,
-        "caption": `${req.body.message}`
-    }
-    };
-    
-    allUsers.forEach(function(user) {
-      options.form.to = user.phone;
-      request(options, function (error, response, body) {
-        if (error) throw new Error(error);
-        console.log(`Message sent to `);
-        res.json({"success":true})
+  try{
+    if(req.body.type){
+      var options = {
+        method: 'POST',
+        url: `https://api.ultramsg.com/${process.env.INSTANCE_ID}/messages/video`,
+        headers: {'content-type': ' application/x-www-form-urlencoded'},
+        form: {
+          "token":process.env.WHATSAPP_TOKEN ,
+          "to": "",
+          "video":`${req.body.url}`,
+          "caption": `${req.body.message}`
+      }
+      };
+      
+      allUsers.forEach(function(user) {
+        options.form.to = user.phone;
+        request(options, function (error, response, body) {
+          if (error) throw new Error(error);
+          console.log(`Message sent to `);
+          res.json({"send":true,"message":"لقد ارسال الرسالة بنجاح"})
+        });
       });
-    });
-   
-  }else{
-    var options = {
-      method: 'POST',
-      url: `https://api.ultramsg.com/${process.env.INSTANCE_ID}/messages/image`,
-      headers: {'content-type': ' application/x-www-form-urlencoded'},
-      form: {
-        "token":process.env.WHATSAPP_TOKEN ,
-        "to": "",
-        "image": `${req.body.url}`,
-        "caption": `${req.body.message}`
-    }
-    };
-    
-    allUsers.forEach(function(user) {
-      options.form.to = user.phone;
-      request(options, function (error, response, body) {
-        if (error) throw new Error(error);
-        console.log(`Message sent to `);
-        res.json({"success":true})
+     
+    }else{
+      var options = {
+        method: 'POST',
+        url: `https://api.ultramsg.com/${process.env.INSTANCE_ID}/messages/image`,
+        headers: {'content-type': ' application/x-www-form-urlencoded'},
+        form: {
+          "token":process.env.WHATSAPP_TOKEN ,
+          "to": "",
+          "image": `${req.body.url}`,
+          "caption": `${req.body.message}`
+      }
+      };
+      
+      allUsers.forEach(function(user) {
+        options.form.to = user.phone;
+        request(options, function (error, response, body) {
+          if (error) throw new Error(error);
+          console.log(`Message sent to `);
+          res.json({"send":true,"message":"لقد تم ارسال الرسالة بنجاح"})
+      
+        });
       });
-    });
+    }
+     
   }
-   
+  catch(err){
+    res.json({"send":false,"message":"لقد حدث خطا ما"})
+  }
+
   }
 
 module.exports = {

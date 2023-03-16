@@ -11,7 +11,7 @@ import Replay  from "./components/admin/Replay";
 import { Users } from "./components/admin/Users";
 import { Mange } from "./components/admin/Mange";
 import {ErrorPage} from "./pages/ErrorPage"
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { createBrowserRouter} from "react-router-dom";
 
 export const  router = createBrowserRouter([
     {

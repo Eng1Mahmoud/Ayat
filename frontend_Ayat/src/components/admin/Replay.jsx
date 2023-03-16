@@ -1,8 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
 import { Formik, Form, Field } from "formik";
 import axios from "axios";
-import image  from "../../assets/suport.png"
+import image from "../../assets/suport.png";
 import Cookies from "js-cookie";
+import {useNavigate} from "react-router-dom"
 const validate = (values) => {
   const errors = {};
 
@@ -12,28 +13,28 @@ const validate = (values) => {
   return errors;
 };
 
-const AddMessage = () => {
+const Replay = () => {
+  const [send, setSend] = useState(false);
+  const [messageError, setMessageError] = useState("");
+  const navigat = useNavigate()
   const initialValues = {
     replay: "",
-    to:""
+    to: "",
   };
 
   const handleSubmit = (values, { resetForm }) => {
     axios
-      .post("http://localhost:4000/replay", values,
-      {
+      .post("http://localhost:4000/replay", values, {
         headers: {
           "Content-Type": "application/json",
-          "authorization":`Bearer ${Cookies.get("token")}`,
+          authorization: `Bearer ${Cookies.get("token")}`,
         },
       })
       .then((res) => {
-        console.log(res.data);
-      })
-      .catch((err) => {
-        console.error(err);
+        setMessageError(res.data.message);
+        setSend(res.data.send);
       });
-      
+
     resetForm();
   };
 
@@ -50,6 +51,7 @@ const AddMessage = () => {
             </div>
           </div>
           <div className="content py-3 col-md-6 col-sm-12 pb-5">
+            {send ? <div> {messageError}</div> : null}
             <Formik
               initialValues={initialValues}
               validate={validate}
@@ -66,7 +68,6 @@ const AddMessage = () => {
                       className={`form-control ${
                         errors.replay && touched.replay && "is-invalid"
                       }`}
-              
                       component="textarea"
                     />
                     {errors.replay && touched.replay && (
@@ -95,11 +96,11 @@ const AddMessage = () => {
               )}
             </Formik>
           </div>
+          <button className="btn" onClick={()=> navigat("/admin/dashboard")}> العودة الي الصفحة السابقة</button>
         </div>
       </div>
     </section>
   );
 };
 
-export default AddMessage;
-
+export default Replay;
