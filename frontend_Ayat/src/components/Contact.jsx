@@ -18,6 +18,9 @@ const Contact = () => {
     if (!values.name) {
       errors.name = "الاسم مطلوب";
     }
+   else if (!/^[\u0621-\u064A\s]+$/.test(values.name)) {
+      errors.name = 'من فضلك ادخل الاسم باللغة العربية';
+    }
 
     if (!values.phone) {
       errors.phone = "رقم الهاتف مطلوب";
@@ -33,7 +36,7 @@ const Contact = () => {
   };
   const onSubmit = (values, { setSubmitting, resetForm }) => {
     axios
-      .post("https://ayat-cfpy.onrender.com/contact", values, {
+      .post("http://localhost:4000/contact", values, {
         "contnt-type": "application/json",
       })
       .then((res) => {
@@ -82,7 +85,7 @@ const Contact = () => {
                 {({ errors, touched, isSubmitting }) => (
                   <Form>
                     <div className="form-group">
-                      <label htmlFor="firstName " className="py-2 lable">
+                      <label htmlFor="name " className="py-2 lable">
                         الاسم
                       </label>
                       <Field
@@ -95,7 +98,7 @@ const Contact = () => {
                         }`}
                       />
                       <ErrorMessage
-                        name="firstName"
+                        name="name"
                         component="div"
                         className="invalid-feedback"
                       />

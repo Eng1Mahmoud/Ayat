@@ -12,6 +12,8 @@ const SignUp = () => {
 
     if (!values.name) {
       errors.name = "من فضلك قم بادخال الاسم ";
+    } else if (!/^[\u0621-\u064A\s]+$/.test(values.name)) {
+      errors.name = "من فضلك ادخل الاسم باللغة العربية";
     }
 
     if (!values.phone) {
@@ -31,7 +33,7 @@ const SignUp = () => {
 
   const submit = (values, { setSubmitting, resetForm }) => {
     axios
-      .post("https://ayat-cfpy.onrender.com/SignUp", values, {
+      .post("http://localhost:4000/SignUp", values, {
         "contnt-type": "application/json",
       })
       .then((res) => {
@@ -52,7 +54,7 @@ const SignUp = () => {
       <div className="container ">
         <div className="head pt-5  m-auto  pb-3 px-1">
           <h2>
-            اشترك معنا في خدمة  <strong> ايات القران</strong>
+            اشترك معنا في خدمة <strong> ايات القران</strong>
           </h2>
         </div>
         <div className="row flex-sm-row-reverse flex-row">

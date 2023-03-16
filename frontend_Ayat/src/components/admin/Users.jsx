@@ -7,7 +7,7 @@ export const Users = () => {
   const navigat = useNavigate()
   useEffect(() => {
     axios
-      .get("https://ayat-cfpy.onrender.com/AllUser", {
+      .get("http://localhost:4000/AllUser", {
         headers: {
           "Content-Type": "application/json",
           authorization: `Bearer ${Cookies.get("token")}`,
