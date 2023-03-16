@@ -8,7 +8,7 @@ const SignUp = () => {
   const navigate = useNavigate();
   const validation = (values) => {
     const errors = {};
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/i;
+   
 
     if (!values.name) {
       errors.name = "من فضلك قم بادخال الاسم ";
@@ -24,8 +24,6 @@ const SignUp = () => {
 
     if (!values.email) {
       errors.email = "من فضلك قم بادخال الايميل ";
-    } else if (!emailRegex.test(values.email)) {
-      errors.email = "من فضلك قم بادخال ايميل صحيح";
     }
 
     return errors;
