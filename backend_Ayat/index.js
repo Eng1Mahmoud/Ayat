@@ -32,11 +32,11 @@ RoutesMessage(app);
 adminRoutes(app);
 
 // send message every day
-cron.schedule("1 10 * * *", () => {
+cron.schedule("30 10 * * *", () => {
   fetchAyah();
- 
+}, {
+  timezone: "Africa/Cairo"
 });
-
 
 app.listen(process.env.PORT, () => {
   console.log(`app listening on port ${process.env.PORT}`);
