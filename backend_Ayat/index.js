@@ -32,7 +32,7 @@ RoutesMessage(app);
 adminRoutes(app);
 
 // send message every day
-cron.schedule("0 9 * * *", () => {
+cron.schedule("1 10 * * *", () => {
   fetchAyah();
  
 });
