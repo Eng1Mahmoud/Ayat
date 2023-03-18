@@ -6,7 +6,6 @@ const cron = require("node-cron");
 const RoutesUsers = require("./routes/user");
 const RoutesMessage = require("./routes/message");
 const fetchAyah = require("./controlars/fetchAyah");
-const localStorag = require("local-storage");
 const adminRoutes = require("./routes/admin");
 const cookie = require("cookie-parser");
 app.use(cookie());
@@ -14,8 +13,6 @@ app.use(express.json());
 app.use(cors());
 require("dotenv").config();
 const database_passwords = process.env.DATABASE_PASSWORD;
-// set id
-localStorag.set("id", 1);
 
 // conect to database
 mongoose.set("strictQuery", true);
