@@ -5,7 +5,7 @@ const send = () => {
   // this function to send action to send message for user
   axios
     .post(
-      "http://localhost:4000/run",
+      "https://ayat-cfpy.onrender.com/run",
       { run: true },
       {
         "Content-Type": "application/json",
