@@ -35,6 +35,7 @@ app.post("/run", (req, res) => {
   try {
     fetchAyah()
     res.json({ error: false });
+    console.log("sent message");
   } catch (err) {
     res.json({ error: true });
   }
