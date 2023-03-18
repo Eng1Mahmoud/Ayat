@@ -4,6 +4,7 @@ import { NavBar } from "./components/NavBar";
 import { Footer } from "./components/Footer";
 import "../node_modules/bootstrap/dist/css/bootstrap.rtl.min.css"
 function App() {
+  
   return <div className="App">
    
      <NavBar/>

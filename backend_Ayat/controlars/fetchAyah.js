@@ -1,12 +1,17 @@
 const { getAyah } = require("./findAya");
-const localStorag = require("local-storage");
 const { FetchAllUsers } = require("./admin");
 var request = require("request");
+const mongoose = require("mongoose");
 require("dotenv").config();
+const ID_Ayat = require("../models/Id_Ayat");
+const ID = mongoose.model("idayahs", ID_Ayat);
 const fetchAyah = async () => {
   try {
+    const id_Aya = await ID.findOne({});
+
+    console.log(id_Aya);
     const allUsers = await FetchAllUsers();
-    const ayah = await getAyah(localStorag.get("id"));
+    const ayah = await getAyah(id_Aya.id);
     const message = ` *السلام عليكم ورحمة الله وبركاته*  🥰🌿
 الاية ${ayah.ayah_number} من سورة *${ayah.sura}* 👇
 *${ayah.verse}*
@@ -37,7 +42,7 @@ const fetchAyah = async () => {
         if (error) throw new Error(error);
       });
     });
-    localStorag.set("id", localStorag.get("id") + 1);
+    ID.findOneAndUpdate({},{ $inc: { id: 1 } }).then(()=> console.log("updated"))
   } catch (err) {
     console.error(err);
   }

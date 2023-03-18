@@ -13,17 +13,19 @@ app.use(cookie());
 app.use(express.json());
 app.use(cors());
 require("dotenv").config();
-const database_passwords = process.env.DATABASE_PASSWORD
-// set id 
+const database_passwords = process.env.DATABASE_PASSWORD;
+// set id
 localStorag.set("id", 1);
 
 // conect to database
 mongoose.set("strictQuery", true);
 mongoose
-  .connect(`mongodb+srv://mahmoud:${database_passwords}@cluster0.e1vy9kw.mongodb.net/?retryWrites=true&w=majority`)
+  .connect(
+    `mongodb+srv://mahmoud:${database_passwords}@cluster0.e1vy9kw.mongodb.net/?retryWrites=true&w=majority`
+  )
   .then(() => console.log("Connected!"))
   .catch((e) => console.log(e));
-  
+
 // user route
 RoutesUsers(app);
 // Message route
@@ -32,10 +34,14 @@ RoutesMessage(app);
 adminRoutes(app);
 
 // send message every day
-cron.schedule("30 10 * * *", () => {
-  fetchAyah();
-}, {
-  timezone: "Africa/Cairo"
+app.post("/run", (req, res) => {
+  try {
+    fetchAyah()
+    res.json({ error: false });
+  } catch (err) {
+    res.json({ error: true });
+  }
+ 
 });
 
 app.listen(process.env.PORT, () => {
