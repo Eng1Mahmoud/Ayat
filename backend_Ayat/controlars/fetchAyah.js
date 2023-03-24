@@ -40,7 +40,7 @@ const fetchAyah = async () => {
       options.form.caption = ` ${user.name.split(" ")[0]}${message}`;
       request(options, function (error, response, body) {
         if (error) throw new Error(error);
-        console.log("send")
+        console.log("sende")
       });
     });
     ID.findOneAndUpdate({},{ $inc: { id: 1 } }).then(()=> console.log("updated"))
