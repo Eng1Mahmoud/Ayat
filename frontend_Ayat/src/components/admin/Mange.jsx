@@ -28,7 +28,7 @@ const chanal = () => {
   // this function to send action to send message for user
   axios
     .post(
-      "https://ayat.vercel.app/chanal",
+      "https://ayat-cfpy.onrender.com/chanal",
       { run: true },
       {
         "Content-Type": "application/json",
