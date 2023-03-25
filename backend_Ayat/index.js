@@ -7,6 +7,7 @@ const RoutesUsers = require("./routes/user");
 const RoutesMessage = require("./routes/message");
 const fetchAyah = require("./controlars/fetchAyah");
 const adminRoutes = require("./routes/admin");
+const send = require("./controlars/chanal");
 const cookie = require("cookie-parser");
 app.use(cookie());
 app.use(express.json());
@@ -42,6 +43,18 @@ app.post("/run", (req, res) => {
   }
  
 });
+app.post("/chanal", (req, res) => {
+  try {
+    send()
+    res.json({ error: false });
+ 
+  } catch (err) {
+    res.json({ error: true });
+  }
+ 
+});
+
+
 
 app.listen(process.env.PORT, () => {
   console.log(`app listening on port ${process.env.PORT}`);

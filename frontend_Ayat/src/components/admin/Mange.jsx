@@ -24,6 +24,28 @@ const send = () => {
     });
 };
 
+const chanal = () => {
+  // this function to send action to send message for user
+  axios
+    .post(
+      "http://localhost:4000/chanal",
+      { run: true },
+      {
+        "Content-Type": "application/json",
+      }
+    )
+    .then((res) => {
+      console.log(res.data.error);
+      if (!res.data.error) {
+        window.alert("success message");
+      } else {
+        window.alert("faild message");
+      }
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+};
 export const Mange = () => {
   const navigate = useNavigate();
   const route = (route) => {
@@ -69,6 +91,15 @@ export const Mange = () => {
                 onClick={() => send()}
               >
                 ارسال الرسالة اليومية
+              </div>
+            </div>
+
+            <div className="col-md-4 col-sm-12  ">
+              <div
+                className="control item py-5 d-flex justify-content-center align-items-center rounded-2"
+                onClick={() => chanal()}
+              >
+                ارسال الرسالة الي القناة
               </div>
             </div>
           </div>
