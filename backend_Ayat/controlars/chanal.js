@@ -16,9 +16,9 @@ const send = async ()=>{
    bot.sendMessage(
             process.env.ChanalID,` السلام عليكم ورحمة الله وبركاته  🥰🌿
             
-الاية ${ayah.ayah_number} من سورة *${ayah.sura}* 👇
+الاية ${ayah.ayah_number} من سورة  ${ayah.sura} 👇
       
-*${ayah.verse}*
+${ayah.verse}
       
 تفسير الاية 👇🌼
               
